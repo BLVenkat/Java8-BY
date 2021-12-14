@@ -11,7 +11,7 @@ public class StreamFunctions {
 		
 		List<Employee> employees =  Arrays.asList(new Employee(1, "venkat"), 
 				                                  new Employee(3, "amit"), 
-				                                  new Employee(2, "sunil"),
+				                                  new Employee(2, "sunila"),
 				                                  new Employee(4, "aniket"));
 		
 		//Filter with orElse 
@@ -33,11 +33,40 @@ public class StreamFunctions {
 		System.out.println("Employee with min ID");
 		System.out.println(minEmployee);
 		
-		//Stream min function
+		    //Stream max function
 				Employee maxEmployee =  employees.stream().max(Comparator.comparingInt(Employee::getEmpId )).get();
 				System.out.println();
 				System.out.println("Employee with max ID");
-				System.out.println(maxEmployee);
-		
+				System.out.println(maxEmployee);	
+				
+				System.out.println("all match ");
+				
+			    //Stream all match function
+				boolean allMatchEmployes =  employees.stream().allMatch( employee ->{
+					//System.out.println(employee.getEmpId());
+					return employee.getName().contains("a");
+				});
+				
+				System.out.println(allMatchEmployes);
+				
+				System.out.println("any match ");
+				
+				//Stream any match function
+				boolean anyMatchEmployes =  employees.stream().anyMatch( employee ->{
+					//System.out.println(employee.getEmpId());
+					return employee.getName().contains("a");
+				});
+				
+				System.out.println(anyMatchEmployes);
+				
+				System.out.println("non match ");
+				//Stream any match function
+				boolean nonMatchEmployes =  employees.stream().noneMatch( employee ->{
+					System.out.println(employee.getEmpId());
+					return employee.getName().contains("z");
+				});
+				
+				System.out.println(nonMatchEmployes);
 	}
+	
 }
